@@ -4,6 +4,14 @@ Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/)
 * [Linkki dokumentaatiooni](https://github.com/tattimus/Trilogia-tietokanta/tree/master/doc)
+  Linkit näkymien suunnitelmiin:
+  * [Etusivu](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/etusivu)
+  * [Trilogian esittely](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyTrilogia)
+  * [Trilogian osan esittely](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyOsa)
+  * [Listaus](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/listaus)
+  * [Trilogian muokkaus](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/muokkausTrilogia)
+  * [Trilogian osan muokkaus](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/muokkausOsa)
+  * [Haku](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/haku)
 
 ## Työn aihe
 
