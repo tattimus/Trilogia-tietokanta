@@ -1,4 +1,3 @@
--- Lisää CREATE TABLE lauseet tähän tiedostoon
 CREATE TABLE Kayttaja(
   id SERIAL PRIMARY KEY,
   tunnus varchar(20) NOT NULL,
