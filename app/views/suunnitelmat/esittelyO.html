@@ -1,16 +1,68 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<body style="background-color: silver">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Mass effect 2</h1>
+        </div>
+        <div class="col-md-1">
+            <h1>5/5</h1>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-default">Muokkaa</button>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <h2>Tietoja:</h2>
+        </div>
+        <div class="col-md-10">
+            <h3>Arvostelu perusteet</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+
+            <dl>
+                <dt>Trilogiassa</dt>
+                <dd>Ensimmäinen</dd>
+                <dt>Media</dt>
+                <dd>Peli</dd>
+                <dt>Genre</dt>
+                <dd>Sci-fi/Seikkailu</dd>
+                <dt>Julkaistu</dt>
+                <dd>26.1.2010</dd>
+            </dl>
+        </div>
+        <div class="col-md-5">
+            <p>Harvoin käy niin että pidän eniten trilogian toisesta osasta, 
+                Mass effect sarjan kanssa näin kuitenkin pääsi käymään. Kontrollit
+            ovat ensimmäiseen osaan verrattuna melko hunajaa ja pidän jostain syystä 
+            kakkososan hahmoista enemmän. Tarinankerronta on hyvin rytmitettyä ja ykkösen
+            "hauska" kuu ajelu ei esiinny enää perus pelissä. Kaiken kaikkiaan loistavaa
+            ajan vietettä.</p>
+        </div>
+    </div>
+    <h3>Trilogiasta:</h3>
+    <div class="col-md-8">
+        <table class="table table-bordered" style="background-color: whitesmoke">
+            <thead>
+                <tr>
+                    <th>Nimi</th>
+                    <th>Arvio</th>
+                    <th>Media</th>
+                    <th>Genre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th><a href="http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyTrilogia">Mass effect</a></th>
+                    <th>4</th>
+                    <th>Peli</th>
+                    <th>Sci-fi/Seikkailu</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}

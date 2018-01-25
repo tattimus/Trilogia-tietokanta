@@ -1,16 +1,32 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<body style="background-color: silver">
+    
+    <button class="btn btn-default" style="float: right">Kirjaudu ulos</button>
+    <h1> Trilogiat </h1>
+    <table class="table table-bordered" style="background-color: whitesmoke">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Arvio</th>
+                <th>Media</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyTrilogia">Mass effect<a></td>
+                <td>4</td>
+                <td>Peli</td>
+                <td>Sci-fi/Seikkailu</td>
+            </tr>
+            <tr>
+                <td><a href="http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyTrilogia">Metro-trilogia</a></td>
+                <td>5</td>
+                <td>Kirja</td>
+                <td>Post apocalyptic/Seikkailu</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+{% endblock %}
