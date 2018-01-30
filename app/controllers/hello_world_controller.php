@@ -8,8 +8,14 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        // Testaa koodiasi täällä
-        View::make('helloworld.html');
+        $kayttaja = Kayttaja::kaikki();
+        $kayttaja_haku = Kayttaja::etsi_kayttaja(1);
+        $trilogia = Trilogia::kaikki();
+        $trilogia_haku = Trilogia::hae_id(2);
+        Kint::dump($kayttaja);
+        Kint::dump($kayttaja_haku);
+        Kint::dump($trilogia);
+        Kint::dump($trilogia_haku);
     }
 
     public static function etusivu() {

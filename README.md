@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/)
-* [Linkki dokumentaatiooni](https://github.com/tattimus/Trilogia-tietokanta/tree/master/doc)
+* [Linkki dokumentaatiooni](https://github.com/tattimus/Trilogia-tietokanta/tree/master/doc/dokumentaatio.pdf)
 *  Linkit näkymien suunnitelmiin:
   * [Etusivu](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/etusivu)
   * [Trilogian esittely](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyTrilogia)
