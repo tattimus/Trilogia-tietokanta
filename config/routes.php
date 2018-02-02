@@ -20,6 +20,14 @@
       TrilogiaController::esittely($id);  
   });
   
+  $routes->get('/lisaa', function() {
+      TrilogiaController::lisays();
+  });
+  
+  $routes->post('/esittelyTrilogia', function() {
+      TrilogiaController::lisaa();
+  });
+  
   $routes->get('/listaus', function() {
       TrilogiaController::listaaTrilogiat();  
   });

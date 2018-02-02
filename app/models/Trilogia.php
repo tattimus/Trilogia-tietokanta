@@ -58,5 +58,15 @@ class Trilogia extends BaseModel {
         }
         return null;
     }
+    
+    public function tallenna() {
+        $kysely = DB::connection()->prepare('INSERT INTO Trilogia (kayttaja_id, nimi, arvio, media, sanallinen_arvio) '
+                . 'VALUES (:kayttaja_id, :nimi, :arvio, :media, :sanallinen_arvio) RETURNING id');
+        $kysely->execute(array('kayttaja_id' => 1, 'nimi' => $this -> nimi, 'arvio' => $this -> arvio, 
+            'media' => $this -> media, 'sanallinen_arvio' => $this -> sanallinen_arvio));
+        $rivi = $kysely->fetch();
+        $this->id = $rivi['id'];
+        
+    }
 
 }

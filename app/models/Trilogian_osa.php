@@ -96,4 +96,13 @@ class trilogian_osa extends BaseModel {
         return $trilogia_id;
     }
 
+    public function tallenna($id) {
+        $kysely = DB::connection()->prepare('INSERT INTO Trilogian_osa (trilogia_id, kayttaja_id, nimi, arvio, monesko_osa, media, julkaistu, sanallinen_arvio) '
+                . 'VALUES (:trilogia_id, :kayttaja_id, :nimi, :arvio, :monesko_osa, :media, :julkaistu, :sanallinen_arvio) RETURNING id');
+        $kysely->execute(array('trilogia_id' => $id, 'kayttaja_id' => 1, 'nimi' => $this->nimi, 'arvio' => $this->arvio,
+            'monesko_osa' => $this->monesko_osa, 'media' => $this->media, 'julkaistu' => $this->julkaistu, 'sanallinen_arvio' => $this->sanallinen_arvio));
+        $rivi = $kysely->fetch();
+        $this->id = $rivi['id'];
+    }
+
 }
