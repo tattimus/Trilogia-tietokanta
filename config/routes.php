@@ -12,16 +12,16 @@
       HelloWorldController::etusivu();  
   });
   
-  $routes->get('/esittelyOsa', function() {
-      HelloWorldController::esittelyOsa();  
+  $routes->get('/esittelyOsa/:id', function($id) {
+      OsaController::Osan_esittely($id);  
   });
   
-  $routes->get('/esittelyTrilogia', function() {
-      HelloWorldController::esittelyTrilogia();  
+  $routes->get('/esittelyTrilogia/:id', function($id) {
+      TrilogiaController::esittely($id);  
   });
   
   $routes->get('/listaus', function() {
-      HelloWorldController::listaus();  
+      TrilogiaController::listaaTrilogiat();  
   });
   
   $routes->get('/muokkausOsa', function() {

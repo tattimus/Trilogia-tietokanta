@@ -2,7 +2,7 @@
 {% block content %}
 <body style="background-color: silver">
     
-    <button class="btn btn-default" style="float: right">Kirjaudu ulos</button>
+    <a href="{{base_path}}/etusivu" class="btn btn-default" style="float:right">Kirjaudu ulos</a>
     <h1> Trilogiat </h1>
     <table class="table table-bordered" style="background-color: whitesmoke">
         <thead>
@@ -14,18 +14,14 @@
             </tr>
         </thead>
         <tbody>
+            {% for trilogia in trilogiat %}
             <tr>
-                <td><a href="http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyTrilogia">Mass effect<a></td>
-                <td>4</td>
-                <td>Peli</td>
+                <td><a href="{{base_path}}/esittelyTrilogia/{{trilogia.id}}">{{trilogia.nimi}}<a></td>
+                <td>{{trilogia.arvio}}</td>
+                <td>{{trilogia.media}}</td>
                 <td>Sci-fi/Seikkailu</td>
             </tr>
-            <tr>
-                <td><a href="http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/esittelyTrilogia">Metro-trilogia</a></td>
-                <td>5</td>
-                <td>Kirja</td>
-                <td>Post apocalyptic/Seikkailu</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>

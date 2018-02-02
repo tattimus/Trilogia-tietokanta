@@ -12,10 +12,12 @@ class HelloWorldController extends BaseController {
         $kayttaja_haku = Kayttaja::etsi_kayttaja(1);
         $trilogia = Trilogia::kaikki();
         $trilogia_haku = Trilogia::hae_id(2);
+        $trilogia_kayttajahaku = Trilogia::hae_kayttajalla(1);
         Kint::dump($kayttaja);
         Kint::dump($kayttaja_haku);
         Kint::dump($trilogia);
         Kint::dump($trilogia_haku);
+        Kint::dump($trilogia_kayttajahaku);
     }
 
     public static function etusivu() {

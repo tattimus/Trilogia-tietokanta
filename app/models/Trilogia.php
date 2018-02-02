@@ -2,7 +2,7 @@
 
 class Trilogia extends BaseModel {
 
-    public $id, $kayttaja_id, $nimi, $arvio, $media, $sanallinen_Arvio;
+    public $id, $kayttaja_id, $nimi, $arvio, $media, $sanallinen_arvio;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -32,10 +32,29 @@ class Trilogia extends BaseModel {
             $trilogia = new Trilogia(array('id' => $rivi['id'],
                 'kayttaja_id' => $rivi['kayttaja_id'],
                 'nimi' => $rivi['nimi'],
-                'arvio' => $rivi['arvio'], 
+                'arvio' => $rivi['arvio'],
                 'media' => $rivi['media'],
                 'sanallinen_arvio' => $rivi['sanallinen_arvio']));
             return $trilogia;
+        }
+        return null;
+    }
+
+    public static function hae_kayttajalla($id) {
+        $kysely = DB::connection()->prepare('SELECT * FROM Trilogia WHERE kayttaja_id = :id');
+        $kysely->execute(array('id' => $id));
+        $rivit = $kysely->fetchAll();
+        $trilogiat = array();
+        if ($rivit) {
+            foreach ($rivit as $rivi) {
+                $trilogiat[] = new Trilogia(array('id' => $rivi['id'],
+                    'kayttaja_id' => $rivi['kayttaja_id'],
+                    'nimi' => $rivi['nimi'],
+                    'arvio' => $rivi['arvio'],
+                    'media' => $rivi['media'],
+                    'sanallinen_arvio' => $rivi['sanallinen_arvio']));
+            }
+            return $trilogiat;
         }
         return null;
     }
