@@ -6,8 +6,13 @@ Yleisiä linkkejä:
 * [Linkki dokumentaatiooni](https://github.com/tattimus/Trilogia-tietokanta/tree/master/doc/dokumentaatio.pdf)
 
 Testaukseen tarkoitetut tunnukset:
-tunnus: Demo		tunnus: Demo2
-salasana: Demo		salasana: Demo2
+* tunnus: Demo
+* salasana: Demo
+
+ja
+
+* tunnus: Demo2
+* salasana: Demo2
 
 Linkit näkymien suunnitelmiin:
 * [Etusivu](http://tattisam.users.cs.helsinki.fi/Trilogia-tietokanta/etusivu)
