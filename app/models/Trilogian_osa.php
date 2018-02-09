@@ -6,6 +6,7 @@ class trilogian_osa extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validoi_nimi', 'validoi_media', 'validoi_sanallinen', 'validoi_pvm');
     }
 
     public static function kaikki() {
@@ -99,10 +100,20 @@ class trilogian_osa extends BaseModel {
     public function tallenna($id) {
         $kysely = DB::connection()->prepare('INSERT INTO Trilogian_osa (trilogia_id, kayttaja_id, nimi, arvio, monesko_osa, media, julkaistu, sanallinen_arvio) '
                 . 'VALUES (:trilogia_id, :kayttaja_id, :nimi, :arvio, :monesko_osa, :media, :julkaistu, :sanallinen_arvio) RETURNING id');
-        $kysely->execute(array('trilogia_id' => $id, 'kayttaja_id' => 1, 'nimi' => $this->nimi, 'arvio' => $this->arvio,
+        $kysely->execute(array('trilogia_id' => $id, 'kayttaja_id' => $this->kayttaja_id, 'nimi' => $this->nimi, 'arvio' => $this->arvio,
             'monesko_osa' => $this->monesko_osa, 'media' => $this->media, 'julkaistu' => $this->julkaistu, 'sanallinen_arvio' => $this->sanallinen_arvio));
         $rivi = $kysely->fetch();
         $this->id = $rivi['id'];
+    }
+
+    public function muokkaa() {
+        $kysely = DB::connection()->prepare('UPDATE Trilogian_osa SET nimi = :nimi, arvio = :arvio, media = :media, julkaistu = :julkaistu, sanallinen_arvio = :sanallinen_arvio WHERE id = :id');
+        $kysely->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'arvio' => $this->arvio, 'media' => $this->media, 'julkaistu' => $this->julkaistu, 'sanallinen_arvio' => $this->sanallinen_arvio));
+    }
+
+    public function poista() {
+        $kysely = DB::connection()->prepare('DELETE FROM Trilogian_osa WHERE trilogia_id = :id');
+        $kysely->execute(array('id' => $this->trilogia_id));
     }
 
 }

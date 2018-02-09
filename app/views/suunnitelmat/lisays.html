@@ -3,16 +3,25 @@
 <body style="background-color: silver">
     
     <h1 style="text-align: center">Lisää trilogia</h1>
+    {% if errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
     <h3>Trilogia</h3>
     
     <form method="post" action="{{base_path}}/esittelyTrilogia">
         <div class="form-group col-lg-5">
             <label>Nimi</label>
-            <input name ="tnimi" class="form-control" type="text">
+            <input name ="tnimi" class="form-control" value="{{attribuutit.nimi}}" type="text">
         </div>
         <div class="form-group col-lg-1">
             <label>Arvio</label>
-            <select name="tarvio" class="form-control">
+            <select name="tarvio" value="{{attribuutit.arvio}}" class="form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -22,7 +31,7 @@
         </div>
         <div class="form-group col-lg-4">
             <label>Media</label>
-            <input name="tmedia" class="form-control" type="text">
+            <input name="tmedia" class="form-control" value="{{attribuutit.media}}" type="text">
         </div>
         <div class="form-group col-lg-3">
             <label>Genre 1</label>
@@ -34,7 +43,7 @@
         </div>
         <div class="form-group col-lg-7">
             <label>Arvion perustelut</label>
-            <textarea name="tsanallinen" class="form-control" style="height: 150px"></textarea>
+            <textarea name="tsanallinen" class="form-control" style="height: 150px">{{attribuutit.sanallinen_arvio}}</textarea>
         </div>
 
         <h3 class="col-lg-12">Osat</h3>
@@ -42,11 +51,11 @@
 
         <div class="form-group col-lg-4">
             <label>Nimi</label>
-            <input name="1nimi" class="form-control" type="text">
+            <input name="1nimi" class="form-control" value="{{attribuutit1.nimi}}" type="text">
         </div>
         <div class="form-group col-lg-1">
             <label>Arvio</label>
-            <select name="1arvio" class="form-control">
+            <select name="1arvio" value="{{attribuutit1.arvio}}" class="form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -56,7 +65,7 @@
         </div>
         <div class="form-group col-lg-1">
             <label>Osa</label>
-            <select name="1osa" class="form-control">
+            <select name="1osa" value="{{attribuutit1.monesko_osa}}" class="form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -64,24 +73,24 @@
         </div>
         <div class="form-group col-lg-2">
             <label>Media</label>
-            <input name="1media" class="form-control" type="text">
+            <input name="1media" class="form-control" value="{{attribuutit1.media}}" type="text">
         </div>
         <div class="form-group col-lg-2">
             <label>Julkaistu</label>
-            <input name="1julkaistu" class="form-control" type="text">
+            <input name="1julkaistu" class="form-control" value="{{attribuutit1.julkaistu}}" type="text">
         </div>
         <div class="form-group col-lg-7">
             <label>Arvion perustelut</label>
-            <textarea name="1sanallinen" class="form-control" style="height: 150px"></textarea>
+            <textarea name="1sanallinen" class="form-control" style="height: 150px">{{attribuutit1.sanallinen_arvio}}</textarea>
         </div>
         <h4 class="col-lg-12">2.</h4>
         <div class="form-group col-lg-4">
             <label>Nimi</label>
-            <input name="2nimi" class="form-control" type="text">
+            <input name="2nimi" class="form-control" value="{{attribuutit2.nimi}}" type="text">
         </div>
         <div class="form-group col-lg-1">
             <label>Arvio</label>
-            <select name="2arvio" class="form-control">
+            <select name="2arvio" value="{{attribuutit2.arvio}}" class="form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -91,7 +100,7 @@
         </div>
         <div class="form-group col-lg-1">
             <label>Osa</label>
-            <select name="2osa" class="form-control">
+            <select name="2osa" value="{{attribuutit2.monesko_osa}}" class="form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -99,20 +108,20 @@
         </div>
         <div class="form-group col-lg-2">
             <label>Media</label>
-            <input name="2media" class="form-control" type="text">
+            <input name="2media" class="form-control" value="{{attribuutit2.media}}" type="text">
         </div>
         <div class="form-group col-lg-2">
             <label>Julkaistu</label>
-            <input name="2julkaistu" class="form-control" type="text">
+            <input name="2julkaistu" class="form-control" value="{{attribuutit2.julkaistu}}" type="text">
         </div>
         <div class="form-group col-lg-7">
             <label>Arvion perustelut</label>
-            <textarea name="2sanallinen" class="form-control" style="height: 150px"></textarea>
+            <textarea name="2sanallinen" class="form-control" style="height: 150px">{{attribuutit2.sanallinen_arvio}}</textarea>
         </div>
         <h4 class="col-lg-12">3.</h4>
         <div class="form-group col-lg-4">
             <label>Nimi</label>
-            <input name="3nimi" class="form-control" type="text">
+            <input name="3nimi" class="form-control" value="{{attribuutit3.nimi}}" type="text">
         </div>
         <div class="form-group col-lg-1">
             <label>Arvio</label>
@@ -134,15 +143,15 @@
         </div>
         <div class="form-group col-lg-2">
             <label>Media</label>
-            <input name="3media" class="form-control" type="text">
+            <input name="3media" class="form-control" value="{{attribuutit3.media}}" type="text">
         </div>
         <div class="form-group col-lg-2">
             <label>Julkaistu</label>
-            <input name="3julkaistu" class="form-control" type="text">
+            <input name="3julkaistu" class="form-control" value="{{attribuutit3.julkaistu}}" type="text">
         </div>
         <div class="form-group col-lg-7">
             <label>Arvion perustelut</label>
-            <textarea name="3sanallinen" class="form-control" style="height: 150px"></textarea>
+            <textarea name="3sanallinen" class="form-control" style="height: 150px">{{attribuutit3.sanallinen_arvio}}</textarea>
         </div>
         <div class="form-group col-lg-12">
             <button type="submit" class="btn btn-default">Lisää</button>

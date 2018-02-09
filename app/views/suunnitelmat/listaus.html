@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 <body style="background-color: silver">
-    
-    <a href="{{base_path}}/etusivu" class="btn btn-default" style="float:right">Kirjaudu ulos</a>
+    {% if viesti %}
+    <div class="alert alert-success">
+        <p>{{viesti}}</p>
+    </div>
+    {% endif %}
+    {% if message %}
+    <div class="alert alert-success">
+        <ul>
+            {% for mes in message %}
+            <li>{{mes}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <a href="{{base_path}}/ulos" class="btn btn-default" style="float:right">Kirjaudu ulos</a>
     <h1> Trilogiat </h1>
     <table class="table table-bordered" style="background-color: whitesmoke">
         <thead>

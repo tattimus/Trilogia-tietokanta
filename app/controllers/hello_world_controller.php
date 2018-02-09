@@ -8,16 +8,16 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        $kayttaja = Kayttaja::kaikki();
-        $kayttaja_haku = Kayttaja::etsi_kayttaja(1);
-        $trilogia = Trilogia::kaikki();
-        $trilogia_haku = Trilogia::hae_id(2);
-        $trilogia_kayttajahaku = Trilogia::hae_kayttajalla(1);
-        Kint::dump($kayttaja);
-        Kint::dump($kayttaja_haku);
-        Kint::dump($trilogia);
-        Kint::dump($trilogia_haku);
-        Kint::dump($trilogia_kayttajahaku);
+        $lotr = new trilogian_osa(array(
+            'nimi' => 'l',
+            'arvio' => '5',
+            'media' => 'elokuvaelokuvaelokuva',
+            'sanallinen_arvio' => 'super jees',
+            'julkaistu' => '13.13.2001'
+        ));
+        
+        $errors = $lotr->errors();
+        Kint::dump($errors);
     }
 
     public static function etusivu() {

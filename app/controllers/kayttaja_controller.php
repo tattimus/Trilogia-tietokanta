@@ -1,8 +1,24 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+class KayttajaController extends BaseController {
+    
+    public static function etusivu() {
+        View::make('suunnitelmat/etusivu.html');
+    }
+    
+    public static function kirjaudu() {
+        $par = $_POST;
+        $kayttaja = Kayttaja::todennus($par['tunnus'], $par['salasana']);
+        if(!$kayttaja) {
+            View::make('suunnitelmat/etusivu.html', array('error' => 'Tunnus tai salasana väärin!', 'tunnus' => $par['tunnus']));
+        } else {
+            $_SESSION['user'] = $kayttaja->id;
+            Redirect::to('/listaus', array('viesti' => 'Well hello there :)'));
+        }
+    }
+    
+    public static function ulos() {
+        $_SESSION['user'] = null;
+        Redirect::to('/kirjaudu');
+    }
+}
 

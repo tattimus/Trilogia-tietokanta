@@ -1,24 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 <body style="background-color: silver">
-    <h1>Metro-trilogia</h1>
+    {% if errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <h1>{{attribuutit.nimi}}</h1>
     <div class="col-md-5">
-        <form>
+        <form method="post" action="{{base_path}}/esittelyTrilogia/{{attribuutit.id}}/muokkaa">
             <div class="form-group">
                 <label>Nimi</label>
-                <input class="form-control"  type="text" value="Metro-trilogia">
+                <input class="form-control" name="nimi" value="{{attribuutit.nimi}}" type="text">
             </div>
-            <div class="form-group" class="col-md-4">
+            <div class="form-group">
                 <label>Arvio</label>
-                <input class="form-control" type="text" value="5">
+                <select name="arvio" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Media</label>
+                <input class="form-control" name="media" value="{{attribuutit.media}}" type="text">
+            </div>
+            <div class="form-group">
+                <label>Genre</label>
+                <input class="form-control" name="genre" type="text" placeholder="Ei toimi vielä...">
             </div>
             <div class="form-group">
                 <label>Arvostelun perusteet</label>
-                <textarea class="form-control" style="height: 200px">
-Loistava luettavaa, kuvaa ihmisyyden rumaa puolta hyvin inhorealistiseen tyyliin. Ensimmäinen osa käsittelee ihmisiä ja maanpäällisiä mutantteja tasapuolisesti, kun taas toinen osa keskittyy enemmän mutantteihin. Kolmas osa pureutuu oikein lujaa ihmisen luontoon. Ensimmäinen ja kolmas osa ovat hieman parempia kuin toinen mutta sekin on kelpo luettavaa.
-                </textarea>
+                <textarea class="form-control" name="sanallinen_arvio" style="height: 200px">{{attribuutit.sanallinen_arvio}}</textarea>
             </div>
-                <button class="btn btn-default">Tallenna</button>
+            <button type="submit" class="btn btn-default">Tallenna</button>
         </form>
     </div>
 </body>

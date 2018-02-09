@@ -1,32 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 <body style="background-color: silver">
-    <h1>Metro 2033</h1>
+    {% if errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <h1>{{attribuutit.nimi}}</h1>
     <div class="col-md-5">
-        <form>
+        <form method="post" action="{{base_path}}/esittelyOsa/{{attribuutit.id}}/muokkaa">
             <div class="form-group">
                 <label>Nimi</label>
-                <input class="form-control"  type="text" value="Metro 2033">
+                <input class="form-control" name="nimi" type="text" value="{{attribuutit.nimi}}">
             </div>
             <div class="form-group" class="col-md-4">
                 <label>Arvio</label>
-                <input class="form-control" type="text" value="5">
+                <select name="arvio" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Mones trilogiassa</label>
-                <input class="form-control" type="text" value="1.">
+                <select name="monesko_osa" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Media</label>
+                <input class="form-control" name="media" type="text" value="{{attribuutit.media}}">
             </div>
             <div class="form-group">
                 <label>julkaistu</label>
-                <input class="form-control" type="text" value="28.3.2010">
+                <input class="form-control" name="julkaistu" type="text" value="{{attribuutit.julkaistu}}">
             </div>
             <div class="form-group">
                 <label>Arvostelun perusteet</label>
-                <textarea class="form-control" style="height: 200px">
-Hyytävä kuvaus ihmisen luonteesta, ja siitä miten ihmiset mahdollisesti toimisivat maailmanlopun jälkeen. Kielikuvat ja kuvaukset milijööstä ovat karmivaa mutta kiehtovaa kuettavaa.Sisältää myös hirviöitä. En suosittele iltalukemiseksi.
-                </textarea>
+                <textarea class="form-control" name="sanallinen_arvio" style="height: 200px">{{attribuutit.sanallinen_arvio}}</textarea>
             </div>
-                <button class="btn btn-default">Tallenna</button>
+            <button type="submit" class="btn btn-default">Tallenna</button>
         </form>
     </div>
 </body>

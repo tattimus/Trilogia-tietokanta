@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <body style="background-color: silver">
+    {% if messege %}
+    <div class="alert alert-success">
+        <ul>
+            <li>{{messege}}</li>
+        </ul>
+    </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-4">
             <h1>{{osa.nimi}}</h1>
@@ -10,7 +17,7 @@
         </div>
     </div>
     <div class="col-md-12">
-        <button class="btn btn-default">Muokkaa</button>
+        <a href="{{base_path}}/esittelyOsa/{{osa.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
     </div>
     <div class="row">
         <div class="col-md-2">

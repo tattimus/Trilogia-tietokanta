@@ -1,45 +1,106 @@
 <?php
 
-  $routes->get('/', function() {
-    HelloWorldController::index();
-  });
+$routes->get('/', function() {
+    KayttajaController::etusivu();
+}); 
 
-  $routes->get('/hiekkalaatikko', function() {
+$routes->get('/kirjaudu', function() {
+    KayttajaController::etusivu();
+});
+
+$routes->post('/kirjaudu', function() {
+    KayttajaController::kirjaudu();
+});
+
+$routes->get('/ulos', function() {
+    KayttajaController::ulos();
+});
+
+$routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
-  });
-  
-  $routes->get('/etusivu', function() {
-      HelloWorldController::etusivu();  
-  });
-  
-  $routes->get('/esittelyOsa/:id', function($id) {
-      OsaController::Osan_esittely($id);  
-  });
-  
-  $routes->get('/esittelyTrilogia/:id', function($id) {
-      TrilogiaController::esittely($id);  
-  });
-  
-  $routes->get('/lisaa', function() {
-      TrilogiaController::lisays();
-  });
-  
-  $routes->post('/esittelyTrilogia', function() {
-      TrilogiaController::lisaa();
-  });
-  
-  $routes->get('/listaus', function() {
-      TrilogiaController::listaaTrilogiat();  
-  });
-  
-  $routes->get('/muokkausOsa', function() {
-      HelloWorldController::muokkausOsa();  
-  });
-  
-  $routes->get('/muokkausTrilogia', function() {
-      HelloWorldController::muokkausTrilogia();  
-  });
-  
-  $routes->get('/haku', function() {
-      HelloWorldController::haku();  
-  });
+});
+
+$routes->get('/etusivu', function() {
+    HelloWorldController::etusivu();
+});
+
+$routes->get('/esittelyOsa/:id', function($id) {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    OsaController::Osan_esittely($id);
+});
+
+$routes->get('/esittelyTrilogia/:id', function($id) {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::esittely($id);
+});
+
+$routes->get('/lisaa', function() {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::lisays();
+});
+
+$routes->post('/esittelyTrilogia', function() {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::lisaa();
+});
+
+$routes->get('/listaus', function() {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::listaaTrilogiat();
+});
+
+$routes->get('/muokkausOsa', function() {
+    HelloWorldController::muokkausOsa();
+});
+
+$routes->get('/esittelyTrilogia/:id/muokkaa', function($id) {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::muokkaa($id);
+});
+
+$routes->post('/esittelyTrilogia/:id/muokkaa', function($id) {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::paivita($id);
+});
+
+$routes->get('/esittelyTrilogia/:id/poista', function($id) {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::poista($id);
+});
+
+$routes->get('/esittelyOsa/:id/muokkaa', function($id) {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    OsaController::muokkaa($id);
+});
+
+$routes->post('/esittelyOsa/:id/muokkaa', function ($id) {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    OsaController::paivita($id);
+});
+
+$routes->get('/haku', function() {
+    if ($_SESSION['user'] === null) {
+        KayttajaController::ulos();
+    }
+    HelloWorldController::haku();
+});

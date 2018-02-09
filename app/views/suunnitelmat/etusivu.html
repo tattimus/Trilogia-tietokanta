@@ -3,20 +3,25 @@
 <body  style="background-color: silver">
 <div class="col-md-4"></div>
 <div class="col-md-4">
+    {% if error %}
+    <div class="alert alert-danger">
+        <p>{{error}}</p>
+    </div>
+    {% endif %}
     <div>
         <h1> Trilogia kirjasto </h1>
     </div>
     <h3> Kirjautuminen </h3>
-    <form>
+    <form method="post" action="{{base_path}}/kirjaudu">
         <div class="form-group">
             <label> Tunnus </label>
-            <input class="form-control" type="text">
+            <input class="form-control" name="tunnus" value="{{tunnus}}" type="text">
         </div>
         <div class="form-group">
             <label> Salasana </label>
-            <input class="form-control" type="text">
+            <input class="form-control" name="salasana" type="password">
         </div>
-        <button class="btn btn-default">Kirjaudu sisään</button>
+        <button class="btn btn-default" type="submit">Kirjaudu sisään</button>
         <button class="btn btn-default">Rekisteröidy</button>
     </form>
 </div>
