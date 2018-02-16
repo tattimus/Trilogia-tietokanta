@@ -34,8 +34,3 @@ CREATE TABLE GenreLiitos_trilogia(
 trilogia_id INTEGER REFERENCES Trilogia(id),
 genre_id INTEGER REFERENCES Genre(id)
 );
-
-CREATE TABLE GenreLiitos_osa(
-osa_id INTEGER REFERENCES Trilogian_osa(id),
-genre_id INTEGER REFERENCES Genre(id)
-);

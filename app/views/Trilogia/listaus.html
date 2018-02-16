@@ -9,14 +9,12 @@
     {% if message %}
     <div class="alert alert-success">
         <ul>
-            {% for mes in message %}
-            <li>{{mes}}</li>
-            {% endfor %}
+            <li>{{message}}</li>
         </ul>
     </div>
     {% endif %}
     <a href="{{base_path}}/ulos" class="btn btn-default" style="float:right">Kirjaudu ulos</a>
-    <h1> Trilogiat </h1>
+    <h2>Käyttäjän {{kayttaja.tunnus}} trilogiat</h2>
     <table class="table table-bordered" style="background-color: whitesmoke">
         <thead>
             <tr>
@@ -32,7 +30,7 @@
                 <td><a href="{{base_path}}/esittelyTrilogia/{{trilogia.id}}">{{trilogia.nimi}}<a></td>
                 <td>{{trilogia.arvio}}/5</td>
                 <td>{{trilogia.media}}</td>
-                <td>Sci-fi/Seikkailu</td>
+                <td>{{trilogia.genre1}}/{{trilogia.genre2}}</td>
             </tr>
             {% endfor %}
         </tbody>

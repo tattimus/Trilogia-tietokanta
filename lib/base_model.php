@@ -89,11 +89,21 @@ class BaseModel {
 
     public function validoi_pvm() {
         $errors = array();
-        $pvm = explode('.', $this->julkaistu);
-        if (checkdate($pvm[1], $pvm[0], $pvm[2]) == false) {
-            $errors[] = 'Anna päivämäärä muodossa päivä.kuukausi.vuosi.';
+        if ($this->julkaistu != NULL && $this->julkaistu != '') {
+            list($p, $k, $v) = explode('.', $this->julkaistu);
+            if ($p != NULL && $k != NULL && $v != NULL) {
+                if (!checkdate($k, $p, $v)) {
+                    $errors[] = 'Anna päivämäärä muodossa päivä.kuukausi.vuosi.';
+                }
+                return $errors;
+            } else {
+                $errors[] = 'Anna päivämäärä muodossa päivä.kuukausi.vuosi.';
+                return $errors;
+            }
+        } else {
+            $errors[] = 'Julkaistu ei voi olla tyhjä.';
+            return $errors;
         }
-        return $errors;
     }
 
 }

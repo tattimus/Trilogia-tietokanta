@@ -28,7 +28,9 @@
                 <dt>Media</dt>
                 <dd>{{trilogia.media}}</dd>
                 <dt>Genre</dt>
-                <dd>Sci-fi/Seikkailu</dd>
+                {% for genre in genret %}
+                <dd>{{genre.nimi}}</dd>
+                {% endfor %}
             </dl>
         </div>
         <div class="col-md-5">
@@ -55,7 +57,7 @@
                     <th>{{osa.monesko_osa}}. osa</th>
                     <th>{{osa.arvio}}</th>
                     <th>{{osa.media}}</th>
-                    <th>Sci-fi/Seikkailu</th>
+                    <th>{% for genre in genret %}{{genre.nimi}} {% endfor %}</th>
                     <th>{{osa.julkaistu}}</th>
                 </tr>
                 {% endfor %}

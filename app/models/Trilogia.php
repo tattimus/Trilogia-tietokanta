@@ -2,7 +2,7 @@
 
 class Trilogia extends BaseModel {
 
-    public $id, $kayttaja_id, $nimi, $arvio, $media, $sanallinen_arvio;
+    public $id, $kayttaja_id, $nimi, $arvio, $media, $sanallinen_arvio, $genre1, $genre2;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -15,12 +15,24 @@ class Trilogia extends BaseModel {
         $rivit = $kysely->fetchAll();
         $trilogiat = array();
         foreach ($rivit as $rivi) {
+            $kysely = DB::connection()->prepare('SELECT nimi FROM Genre JOIN Genreliitos_trilogia ON Genre.id = Genreliitos_trilogia.genre_id WHERE trilogia_id = :id');
+            $kysely->execute(array('id' => $rivi['id']));
+            $genret = $kysely->fetchAll();
+            $genre = array();
+            foreach ($genret as $gen) {
+                $genre[] = $gen['nimi'];
+            }
             $trilogiat[] = new Trilogia(array('id' => $rivi['id'],
                 'kayttaja_id' => $rivi['kayttaja_id'],
                 'nimi' => $rivi['nimi'],
                 'arvio' => $rivi['arvio'],
                 'media' => $rivi['media'],
-                'sanallinen_arvio' => $rivi['sanallinen_arvio']));
+                'sanallinen_arvio' => $rivi['sanallinen_arvio'], 'genre1' => $genre[0],
+                'genre2' => $genre[1]));
+            
+            
+            
+            
         }
         return $trilogiat;
     }

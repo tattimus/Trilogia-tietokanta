@@ -36,9 +36,11 @@
                 <dt>Media</dt>
                 <dd>{{osa.media}}</dd>
                 <dt>Genre</dt>
-                <dd>Sci-fi/Seikkailu</dd>
+                {% for genre in genret %}
+                <dd>{{genre.nimi}}</dd>
+                {% endfor %}
                 <dt>Julkaistu</dt>
-                <dd>{{osa.julkaistu}}</dd>
+                <dd>{{julkaistu[0]}}</dd>
             </dl>
         </div>
         <div class="col-md-5">
@@ -61,7 +63,7 @@
                     <th><a href="{{base_path}}/esittelyTrilogia/{{trilogia.id}}">{{trilogia.nimi}}</a></th>
                     <th>{{trilogia.arvio}}</th>
                     <th>{{trilogia.media}}</th>
-                    <th>Sci-fi/Seikkailu</th>
+                    <th>{% for genre in genret %}{{genre.nimi}} {% endfor %}</th>
                 </tr>
             </tbody>
         </table>

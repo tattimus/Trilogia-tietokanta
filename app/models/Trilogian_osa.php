@@ -76,6 +76,10 @@ class trilogian_osa extends BaseModel {
         $osat = array();
 
         foreach ($rivit as $rivi) {
+            list($v, $k, $p) = explode('-', $rivi['julkaistu']);
+            $uusi = $p . '.' . $k . '.' . $v;
+            $julkaistu = array();
+            $julkaistu[] = $uusi;
             $osat[] = new trilogian_osa(array('id' => $rivi['id'],
                 'trilogia_id' => $rivi['trilogia_id'],
                 'kayttaja_id' => $rivi['kayttaja_id'],
@@ -83,7 +87,7 @@ class trilogian_osa extends BaseModel {
                 'monesko_osa' => $rivi['monesko_osa'],
                 'arvio' => $rivi['arvio'],
                 'media' => $rivi['media'],
-                'julkaistu' => $rivi['julkaistu'],
+                'julkaistu' => $julkaistu[0],
                 'sanallinen_arvio' => $rivi['sanallinen_arvio']));
         }
         return $osat;
