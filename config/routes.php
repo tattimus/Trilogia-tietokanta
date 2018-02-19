@@ -2,7 +2,7 @@
 
 $routes->get('/', function() {
     KayttajaController::etusivu();
-}); 
+});
 
 $routes->get('/kirjaudu', function() {
     KayttajaController::etusivu();
@@ -46,7 +46,7 @@ $routes->get('/lisaa', function() {
 });
 
 $routes->post('/esittelyTrilogia', function() {
-if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
+    if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
         KayttajaController::ulos();
     }
     TrilogiaController::lisaa();
@@ -102,5 +102,12 @@ $routes->get('/haku', function() {
     if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
         KayttajaController::ulos();
     }
-    HelloWorldController::haku();
+    TrilogiaController::haku();
+});
+
+$routes->post('/haku/tulokset', function() {
+    if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
+        KayttajaController::ulos();
+    }
+    TrilogiaController::tulokset();
 });
