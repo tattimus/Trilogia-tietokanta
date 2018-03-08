@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <body style="background-color: silver">
+    {% if message %}
+    <div class="alert alert-success">
+        <ul>
+            <li>{{message}}</li>
+        </ul>
+    </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-4">
             <h1>{{trilogia.nimi}}</h1>
@@ -12,6 +19,7 @@
     <div class="col-md-12">
         <a href="{{base_path}}/esittelyTrilogia/{{trilogia.id}}/poista" class="btn btn-danger">Poista</a>
         <a class="btn btn-default" href="{{base_path}}/esittelyTrilogia/{{trilogia.id}}/muokkaa">Muokkaa</a>
+        <a class="btn btn-default" href="{{base_path}}/esittelyTrilogia/{{trilogia.id}}/lisaaOsa">Lisää osa</a>
     </div>
     <div class="row">
         <div class="col-md-2">

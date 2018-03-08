@@ -24,26 +24,14 @@ class TrilogiaController extends BaseController {
         $genre2 = new Genre(array('nimi' => $genret['genre2']));
         $gE1 = $genre1->errors();
         $gE2 = $genre2->errors();
-        $attribuutit1 = array('kayttaja_id' => $_SESSION['user'], 'trilogia_id' => $trilogia->id, 'nimi' => $par['1nimi'], 'arvio' => $par['1arvio'], 'monesko_osa' => $par['1osa'], 'media' => $par['1media'], 'julkaistu' => $par['1julkaistu'], 'sanallinen_arvio' => $par['1sanallinen']);
-        $attribuutit2 = array('kayttaja_id' => $_SESSION['user'], 'trilogia_id' => $trilogia->id, 'nimi' => $par['2nimi'], 'arvio' => $par['2arvio'], 'monesko_osa' => $par['2osa'], 'media' => $par['2media'], 'julkaistu' => $par['2julkaistu'], 'sanallinen_arvio' => $par['2sanallinen']);
-        $attribuutit3 = array('kayttaja_id' => $_SESSION['user'], 'trilogia_id' => $trilogia->id, 'nimi' => $par['3nimi'], 'arvio' => $par['3arvio'], 'monesko_osa' => $par['3osa'], 'media' => $par['3media'], 'julkaistu' => $par['3julkaistu'], 'sanallinen_arvio' => $par['3sanallinen']);
-        $osa1 = new trilogian_osa($attribuutit1);
-        $osa2 = new trilogian_osa($attribuutit2);
-        $osa3 = new trilogian_osa($attribuutit3);
         $errorst = $trilogia->errors();
-        $errors1 = $osa1->errors();
-        $errors2 = $osa2->errors();
-        $errors3 = $osa3->errors();
-        $errors = array_merge($errorst, $errors1, $errors2, $errors3, $gE1, $gE2);
-        if (count($errorst) + count($errors1) + count($errors2) + count($errors3) + count($gE1) + count($gE2) == 0) {
+        $errors = array_merge($errorst, $gE1, $gE2);
+        if (count($errorst) + count($gE1) + count($gE2) == 0) {
             $trilogia->tallenna();
-            $osa1->tallenna($trilogia->id);
-            $osa2->tallenna($trilogia->id);
-            $osa3->tallenna($trilogia->id);
             GenreController::genreCheck($par['genre1'], $par['genre2'], $trilogia->id);
             Redirect::to('/esittelyTrilogia/' . $trilogia->id);
         } else {
-            View::make('Trilogia/lisays.html', array('errors' => $errors, 'attribuutit' => $attribuutit, 'attribuutit1' => $attribuutit1, 'attribuutit2' => $attribuutit2, 'attribuutit3' => $attribuutit3, 'genret' => $genret));
+            View::make('Trilogia/lisays.html', array('errors' => $errors, 'attribuutit' => $attribuutit, 'genret' => $genret));
         }
     }
 

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<body style="background-color: silver">
+    <h1 style="text-align: center">Lisää osa</h1>
+    {% if errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+            <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% if message %}
+    <div class="alert alert-danger">
+        <ul>
+            <li>{{message}}</li>
+        </ul>
+    </div>
+    {% endif %}
+    <form method="post" action="{{base_path}}/esittelyTrilogia/{{trilogia.id}}/lisaaOsa">
+        <div class="form-group col-lg-4">
+            <label>Nimi</label>
+            <input name="nimi" class="form-control" value="{{attribuutit.nimi}}" type="text">
+        </div>
+        <div class="form-group col-lg-1">
+            <label>Arvio</label>
+            <select name="arvio" value="{{attribuutit.arvio}}" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="form-group col-lg-1">
+            <label>Osa</label>
+            <select name="osa" value="{{attribuutit.monesko_osa}}" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div class="form-group col-lg-2">
+            <label>Media</label>
+            <input name="media" class="form-control" value="{{attribuutit.media}}" type="text">
+        </div>
+        <div class="form-group col-lg-2">
+            <label>Julkaistu</label>
+            <input name="julkaistu" class="form-control" value="{{attribuutit.julkaistu}}" type="text">
+        </div>
+        <div class="form-group col-lg-7">
+            <label>Arvion perustelut</label>
+            <textarea name="sanallinen_arvio" class="form-control" style="height: 150px">{{attribuutit.sanallinen_arvio}}</textarea>
+        </div>
+        <div class="form-group col-lg-12">
+        <button type="submit" class="btn btn-default">Lisää</button>
+        </div>
+    </form>
+    {% endblock %}

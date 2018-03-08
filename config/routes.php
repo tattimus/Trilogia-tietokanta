@@ -31,6 +31,27 @@ $routes->get('/esittelyOsa/:id', function($id) {
     OsaController::Osan_esittely($id);
 });
 
+$routes->get('/esittelyOsa/:id/poista', function($id) {
+    if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
+        KayttajaController::ulos();
+    }
+    OsaController::poistaOsa($id);
+});
+
+$routes->get('/esittelyTrilogia/:id/lisaaOsa', function($id) {
+    if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
+        KayttajaController::ulos();
+    }
+    OsaController::lisays($id);
+});
+
+$routes->post('/esittelyTrilogia/:id/lisaaOsa', function($id) {
+    if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
+        KayttajaController::ulos();
+    }
+    OsaController::lisaa($id);
+});
+
 $routes->get('/esittelyTrilogia/:id', function($id) {
     if (!isset($_SESSION['user']) || $_SESSION['user'] === NULL) {
         KayttajaController::ulos();

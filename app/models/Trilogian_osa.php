@@ -111,8 +111,8 @@ class trilogian_osa extends BaseModel {
     }
 
     public function muokkaa() {
-        $kysely = DB::connection()->prepare('UPDATE Trilogian_osa SET nimi = :nimi, arvio = :arvio, media = :media, julkaistu = :julkaistu, sanallinen_arvio = :sanallinen_arvio WHERE id = :id');
-        $kysely->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'arvio' => $this->arvio, 'media' => $this->media, 'julkaistu' => $this->julkaistu, 'sanallinen_arvio' => $this->sanallinen_arvio));
+        $kysely = DB::connection()->prepare('UPDATE Trilogian_osa SET nimi = :nimi, arvio = :arvio, monesko_osa = :monesko_osa, media = :media, julkaistu = :julkaistu, sanallinen_arvio = :sanallinen_arvio WHERE id = :id');
+        $kysely->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'arvio' => $this->arvio, 'monesko_osa' => $this->monesko_osa, 'media' => $this->media, 'julkaistu' => $this->julkaistu, 'sanallinen_arvio' => $this->sanallinen_arvio));
     }
 
     public function poista() {

@@ -90,9 +90,9 @@ class BaseModel {
     public function validoi_pvm() {
         $errors = array();
         if ($this->julkaistu != NULL && $this->julkaistu != '') {
-            list($p, $k, $v) = explode('.', $this->julkaistu);
-            if ($p != NULL && $k != NULL && $v != NULL) {
-                if (!checkdate($k, $p, $v)) {
+            $pvm = explode('.', $this->julkaistu);
+            if (count($pvm) == 3) {
+                if (!checkdate($pvm[1], $pvm[0], $pvm[2])) {
                     $errors[] = 'Anna päivämäärä muodossa päivä.kuukausi.vuosi.';
                 }
                 return $errors;

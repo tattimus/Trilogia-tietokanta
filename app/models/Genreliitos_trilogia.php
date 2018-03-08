@@ -9,7 +9,7 @@ class Genreliitos_trilogia extends BaseModel {
     }
     
     public function poista() {
-        $kysely = DB::connection()->prepare('DELETE * FROM Genreliitos_trilogia WHERE trilogia_id = :id');
+        $kysely = DB::connection()->prepare('DELETE FROM Genreliitos_trilogia WHERE trilogia_id = :id');
         $kysely->execute(array('id' => $this->trilogia_id));
     }
     
